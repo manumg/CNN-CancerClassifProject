@@ -48,7 +48,7 @@ def model_predict(img_path, model):
     elif preds == 2:
         preds="Not Cancer"
     else:
-        preds= "Squamous Cell Carcinoma Cancer"
+        preds= "Squamous Cell Carcinoma"
     
     
     return preds
@@ -78,6 +78,14 @@ def upload():
         return result
     return None
 
+from flask import send_file
+
+# ... (your existing code)
+
+@app.route('/download_sample', methods=['GET'])
+def download_sample():
+    sample_image_path = 'sample_image.png'  # Update with the correct path
+    return send_file(sample_image_path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
